@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema multiagente automatizado para revisión bibliográfica técnica. Extracción, validación cruzada y síntesis de evidencia científica con reducción del ciclo de investigación de semanas a horas.">
+    <meta property="og:title" content="Sistema Multiagente para Revisión Bibliográfica y Síntesis Técnica | Ingeniero Ambiental &amp; Sanitario | Gerencia &amp; Formulación de Proyectos">
+    <meta property="og:description" content="Prueba de Concepto (PoC) de un sistema multiagente automatizado para investigación técnica. Extracción, validación cruzada y síntesis de evidencia científica, reduciendo el ciclo de investigación de semanas a horas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ingenierojuancueto.com/lab/lab-01-bibliografia-multiagente.html">
+    <meta property="og:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sistema Multiagente para Revisión Bibliográfica y Síntesis Técnica">
+    <meta name="twitter:description" content="Prueba de Concepto (PoC) de un sistema multiagente automatizado para investigación técnica. Extracción, validación cruzada y síntesis de evidencia científica, reduciendo el ciclo de investigación de semanas a horas.">
+    <meta name="twitter:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+    <link rel="canonical" href="https://www.ingenierojuancueto.com/lab/lab-01-bibliografia-multiagente.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23047857'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3EJC%3C/text%3E%3C/svg%3E">
+    <title>Revisión Bibliográfica Multiagente | Laboratorio</title>
+
+    <link rel="stylesheet" href="../assets/css/main.min.css">
+    <link rel="stylesheet" href="../assets/css/chat.css">
+    <link rel="preconnect" href="https://script.google.com">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Juan Luis Cueto Tilano",
+        "jobTitle": "Gerente de Proyectos & Formulador de Desarrollo Rural",
+        "url": "https://www.ingenierojuancueto.com/lab/lab-01-bibliografia-multiagente.html",
+        "sameAs": "https://www.linkedin.com/in/juancuetolt/",
+        "knowsAbout": ["Infraestructura Sostenible", "Saneamiento B\u00e1sico", "Desarrollo Rural Territorial", "Gesti\u00f3n de Proyectos PMI", "Cooperaci\u00f3n Internacional", "Formulaci\u00f3n MML", "Compostaje Industrial", "Tratamiento de Aguas", "Gesti\u00f3n del Riesgo Fitosanitario"],
+        "areaServed": "Colombia",
+        "knowsLanguage": ["Spanish", "English"]
+    }
+    </script>
+</head>
+<body class="bg-fondo-principal">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<div id="barra-progreso-pagina" class="barra-progreso-pagina"></div>
+
+<header class="nav-header">
+    <div class="nav-contenedor">
+        <div class="nav-marca">
+            <a href="../index.html" class="nav-logo" aria-label="Inicio">JC</a>
+            <div>
+                <span class="nav-nombre">JUAN LUIS CUETO</span>
+                <span class="nav-rol">Ingeniero Ambiental | Gerencia &amp; Formulaci&oacute;n</span>
+            </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Navegación principal">
+            <a href="../index.html" class="nav-link">Inicio</a>
+            <a href="../proyectos/index.html" class="nav-link">Proyectos y Consultorías</a>
+            <a href="../conocimiento/index.html" class="nav-link">Centro de Conocimiento</a>
+        </nav>
+
+        <div class="nav-acciones">
+            <a href="../contacto.html" class="btn-contacto-nav">Contacto Estratégico</a>
+            <button id="btn-tema" class="btn-tema" onclick="toggleDarkMode()" aria-label="Alternar modo oscuro">
+                <svg class="icono-tema-luna" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icono-tema-sol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button id="btn-menu-movil" class="btn-menu-movil" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div id="menu-movil" class="menu-movil">
+    <button id="btn-cerrar-menu" class="menu-movil-cerrar" aria-label="Cerrar menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="menu-movil-links">
+        <a href="../index.html">Inicio</a>
+        <a href="../proyectos/index.html">Proyectos y Consultorías</a>
+        <a href="../conocimiento/index.html">Centro de Conocimiento</a>
+        <a href="../contacto.html">Contacto Estratégico</a>
+    </nav>
+</div>
+
+<main id="main-content">
+
+<section class="seccion seccion-fondo-blanco seccion-con-borde">
+    <div class="container">
+        <header class="seccion-header">
+            <span class="seccion-etiqueta">Centro de Conocimiento — Laboratorio de Innovación Operativa</span>
+            <h1 class="seccion-titulo">Sistema Multiagente para Revisión Bibliográfica y Síntesis Técnica</h1>
+            <p class="seccion-descripcion">Prueba de Concepto (PoC) de un sistema multiagente automatizado para investigación técnica. Extracción, validación cruzada y síntesis de evidencia científica, reduciendo el ciclo de investigación de semanas a horas.</p>
+            <div style="display:flex;gap:var(--espaciado-md);margin-top:var(--espaciado-md)">
+                <span class="badge-academico">Estado: completado</span>
+                <span class="badge-academico">2026</span>
+                
+                <span class="badge-academico">Investigación y Síntesis con IA</span>
+                
+            </div>
+        </header>
+
+        
+        <div class="lab-progreso" style="max-width:48rem;margin:0 auto var(--espaciado-2xl);padding:var(--espaciado-lg);background:var(--color-fondo-principal);border:1px solid var(--color-borde-suave);border-radius:var(--radio-md)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--espaciado-sm)">
+                <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-texto-secundario)">Progreso del Experimento</span>
+                <span style="font-size:1.25rem;font-weight:800;color:var(--color-acento-esmeralda)">100%</span>
+            </div>
+            <div class="barra-progreso">
+                <div class="barra-progreso-relleno barra-progreso-relleno--esmeralda" style="width:100%"></div>
+            </div>
+            
+            <div style="margin-top:var(--espaciado-lg)">
+                <span style="font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-acento-esmeralda);margin-bottom:var(--espaciado-sm);display:block">Capacidades Logradas</span>
+                
+                <div style="display:flex;align-items:flex-start;gap:var(--espaciado-sm);font-size:0.8125rem;color:var(--color-texto-secundario);font-weight:300;margin-bottom:var(--espaciado-xs);line-height:1.5">
+                    <span style="color:var(--color-acento-esmeralda);flex-shrink:0;margin-top:2px">&#10003;</span>
+                    <span>Reducción del tiempo de investigación de semanas a horas</span>
+                </div>
+                
+                <div style="display:flex;align-items:flex-start;gap:var(--espaciado-sm);font-size:0.8125rem;color:var(--color-texto-secundario);font-weight:300;margin-bottom:var(--espaciado-xs);line-height:1.5">
+                    <span style="color:var(--color-acento-esmeralda);flex-shrink:0;margin-top:2px">&#10003;</span>
+                    <span>Sistema de validación anti-alucinación con Agente Auditor</span>
+                </div>
+                
+                <div style="display:flex;align-items:flex-start;gap:var(--espaciado-sm);font-size:0.8125rem;color:var(--color-texto-secundario);font-weight:300;margin-bottom:var(--espaciado-xs);line-height:1.5">
+                    <span style="color:var(--color-acento-esmeralda);flex-shrink:0;margin-top:2px">&#10003;</span>
+                    <span>Arquitectura escalable como motor de descubrimiento técnico-científico</span>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+        
+
+        <div class="proyecto-ficha">
+            <div class="proyecto-ficha-bloque">
+                <h2>El Reto</h2>
+<p>Optimizar la fase de diagnóstico y revisión del estado del arte en la formulación de proyectos. Este proceso tradicionalmente consume semanas de trabajo y corre el riesgo de basar soluciones en fuentes poco rigurosas o sesgadas.</p>
+<h2>Arquitectura y Gestión</h2>
+<p>Diseño y orquestación de un pipeline compuesto por 8 agentes especializados que procesan información secuencialmente basándose en literatura científica de acceso abierto.</p>
+<p>El sistema opera bajo protocolos estrictos:</p>
+<p><strong>Síntesis Técnica:</strong> Extracción de datos y estructuración de redacción para garantizar que la información compleja sea comprensible y útil para la toma de decisiones.</p>
+<p><strong>Rigor Anti-Alucinación:</strong> Implementación de validadores cruzados para asegurar que todas las fuentes sean reales y el contenido esté estrictamente anclado a evidencia científica.</p>
+<p><strong>Control de Calidad Automatizado:</strong> Un Agente Auditor verifica inconsistencias. Si detecta errores, devuelve el borrador para corrección antes de compilar el documento final.</p>
+<h2>Impacto y Capacidades Demostradas</h2>
+<p><strong>Eficiencia Analítica:</strong> Reducción del tiempo de investigación y revisión bibliográfica de semanas a horas.</p>
+<p><strong>Rigor Técnico:</strong> Garantía de formulación de proyectos sobre bases científicas sólidas, verificables y sin información inventada.</p>
+<p><strong>Visión Gerencial:</strong> Arquitectura escalable, aplicable como motor de descubrimiento para identificar soluciones técnicas y científicas a problemas reales de ingeniería y desarrollo territorial.</p>
+            </div>
+        </div>
+
+        <nav style="margin-top:var(--espaciado-3xl);text-align:center">
+            <a href="../conocimiento/index.html" class="btn btn-secundario">Volver al Centro de Conocimiento</a>
+        </nav>
+    </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer-texto">
+        &copy; <span id="anio-footer">2026</span> Juan Luis Cueto Tilano. Todos los derechos reservados. Ingenier&iacute;a Ambiental, Sostenibilidad &amp; Desarrollo Territorial.
+    </p>
+</footer>
+
+<script src="../assets/js/principal.js" defer></script>
+<script src="../assets/js/componentes.js" defer></script>
+<script src="../assets/js/chatbot.js" defer data-ruta-base="../"></script>
+
+
+</body>
+</html>

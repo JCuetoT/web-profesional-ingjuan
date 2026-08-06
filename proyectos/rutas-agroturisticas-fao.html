@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modelado de rutas agroturísticas con 2 planes de negocio (Banano/Café), 3 prototipos web (MVP) y SIG en QGIS. PVP proyectado $250-$550 USD, margen >50% y ROI de 4-5 meses.">
+    <meta property="og:title" content="Modelado de Rutas Agroturísticas y Ecosistemas de Innovación Rural | Ingeniero Ambiental &amp; Sanitario | Gerencia &amp; Formulación de Proyectos">
+    <meta property="og:description" content="Diseño de 2 planes de negocio (Banano/Café), 3 prototipos web funcionales (MVP) y modelado SIG en QGIS. PVP proyectado $250-$550 USD, margen >50%, ROI 4-5 meses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ingenierojuancueto.com/proyectos/rutas-agroturisticas-fao.html">
+    <meta property="og:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Modelado de Rutas Agroturísticas y Ecosistemas de Innovación Rural">
+    <meta name="twitter:description" content="Diseño de 2 planes de negocio (Banano/Café), 3 prototipos web funcionales (MVP) y modelado SIG en QGIS. PVP proyectado $250-$550 USD, margen >50%, ROI 4-5 meses.">
+    <meta name="twitter:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+    <link rel="canonical" href="https://www.ingenierojuancueto.com/proyectos/rutas-agroturisticas-fao.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23047857'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3EJC%3C/text%3E%3C/svg%3E">
+    <title>Rutas Agroturísticas FAO | Proyecto</title>
+
+    <link rel="stylesheet" href="../assets/css/main.min.css">
+    <link rel="stylesheet" href="../assets/css/chat.css">
+    <link rel="preconnect" href="https://script.google.com">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Project",
+        "name": "Modelado de Rutas Agrotur\u00edsticas y Ecosistemas de Innovaci\u00f3n Rural",
+        "description": "Dise\u00f1o de 2 planes de negocio (Banano/Caf\u00e9), 3 prototipos web funcionales (MVP) y modelado SIG en QGIS. PVP proyectado $250-$550 USD, margen >50%, ROI 4-5 meses.",
+        "url": "https://www.ingenierojuancueto.com/proyectos/rutas-agroturisticas-fao.html",
+        "sponsor": {
+            "@type": "Person",
+            "name": "Juan Luis Cueto Tilano",
+            "jobTitle": "Gerente de Proyectos",
+            "url": "https://www.linkedin.com/in/juancuetolt/"
+        },
+        "funder": {
+            "@type": "Organization",
+            "name": "FAO"
+        },
+        "location": {
+            "@type": "Place",
+            "name": "Sierra Nevada de Santa Marta (Palmor) \u2013 Zona Bananera"
+        }
+    }
+    </script>
+</head>
+<body class="bg-fondo-principal">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<div id="barra-progreso-pagina" class="barra-progreso-pagina"></div>
+
+<header class="nav-header">
+    <div class="nav-contenedor">
+        <div class="nav-marca">
+            <a href="../index.html" class="nav-logo" aria-label="Inicio">JC</a>
+            <div>
+                <span class="nav-nombre">JUAN LUIS CUETO</span>
+                <span class="nav-rol">Ingeniero Ambiental | Gerencia &amp; Formulaci&oacute;n</span>
+            </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Navegación principal">
+            <a href="../index.html" class="nav-link">Inicio</a>
+            <a href="../proyectos/index.html" class="nav-link">Proyectos y Consultorías</a>
+            <a href="../conocimiento/index.html" class="nav-link">Centro de Conocimiento</a>
+        </nav>
+
+        <div class="nav-acciones">
+            <a href="../contacto.html" class="btn-contacto-nav">Contacto Estratégico</a>
+            <button id="btn-moneda" class="btn-moneda" aria-label="Cambiar moneda">
+                COP <span class="moneda-triangulo">&#9662;</span>
+            </button>
+            <button id="btn-tema" class="btn-tema" onclick="toggleDarkMode()" aria-label="Alternar modo oscuro">
+                <svg class="icono-tema-luna" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icono-tema-sol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button id="btn-menu-movil" class="btn-menu-movil" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div id="menu-movil" class="menu-movil">
+    <button id="btn-cerrar-menu" class="menu-movil-cerrar" aria-label="Cerrar menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="menu-movil-links">
+        <a href="../index.html">Inicio</a>
+        <a href="../proyectos/index.html">Proyectos y Consultorías</a>
+        <a href="../conocimiento/index.html">Centro de Conocimiento</a>
+        <a href="../contacto.html">Contacto Estratégico</a>
+    </nav>
+</div>
+
+<main id="main-content">
+
+<section class="seccion seccion-fondo-blanco seccion-con-borde">
+    <div class="container">
+        <div class="proyecto-ficha">
+            <header class="seccion-header">
+                <span class="seccion-etiqueta">ODS 8: Trabajo Decente y Crecimiento Económico</span>
+                <div style="display:flex;align-items:center;gap:var(--espaciado-lg);flex-wrap:wrap">
+                    
+                    <div>
+                        <h1 class="seccion-titulo">Modelado de Rutas Agroturísticas y Ecosistemas de Innovación Rural</h1>
+                        <p class="seccion-descripcion">Diseño de 2 planes de negocio (Banano/Café), 3 prototipos web funcionales (MVP) y modelado SIG en QGIS. PVP proyectado $250-$550 USD, margen &gt;50%, ROI 4-5 meses.</p>
+                    </div>
+                </div>
+                <div style="margin-top:var(--espaciado-lg)">
+                    <a href="./index.html" class="btn-volver-catalogo">← Volver al Catálogo de Proyectos</a>
+                </div>
+            </header>
+
+            <div class="metricas-proyecto">
+                <div>
+                    <span class="metrica-etiqueta">Estado</span>
+                    <strong class="metrica-valor" style="font-size:0.875rem">
+                        Estructurado (Pre-inversión)
+                        
+                    </strong>
+                </div>
+                <div>
+                    <span class="metrica-etiqueta">Rol Técnico</span>
+                    <strong class="metrica-valor" style="font-size:0.875rem">Estructurador y Modelador SIG</strong>
+                </div>
+                <div>
+                    <span class="metrica-etiqueta">Ubicación</span>
+                    <strong class="metrica-valor" style="font-size:0.875rem">Sierra Nevada de Santa Marta (Palmor) – Zona Bananera</strong>
+                </div>
+                <div>
+                    <span class="metrica-etiqueta">Tipo de Rol</span>
+                    <strong class="metrica-valor" style="font-size:0.875rem">
+                        <span class="badge-rol-formulador">
+                            Formulado
+                        </span>
+                    </strong>
+                </div>
+                
+                <div>
+                    <span class="metrica-etiqueta">Presupuesto</span>
+                    
+                    <strong class="metrica-valor texto-esmeralda">Proyecto de Factibilidad (Prototipos entregados)</strong>
+                    
+                </div>
+                
+            </div>
+
+            <div class="proyecto-ficha-bloque" style="margin-top: var(--espaciado-2xl)">
+
+                
+
+                
+                <section class="proyecto-seccion">
+                    <h2 class="proyecto-seccion-titulo">Formulación & Estrategia</h2>
+                    <div class="proyecto-seccion-contenido">
+                        <h3><strong>Categoría:</strong> C — Innovación, Transformación Digital y Gestión del Cambio</h3>
+<p><strong>Métricas de Gestión:</strong> 2 Planes de Negocio estructurados (Banano de Exportación y Café de Especialidad) | 3 Prototipos Web funcionales (Landing + Simulador Airbnb) | Modelado SIG de nodos georreferenciados (QGIS) | PVP proyectado $250 USD (Full-Day Banano) / $550 USD (Masterclass Café) | Margen neto proyectado &gt;50% | ROI proyectado 4-5 meses | Entregable: Estudio de Pre-inversión y MVP</p>
+<p><strong>Punto de Quiebre:</strong> Pequeños productores minifundistas de banano y café transferían el grueso de sus márgenes a intermediarios logísticos, sufriendo vulnerabilidad estacional de ingresos. Ausencia de infraestructura digital en fincas rurales bloqueaba acceso al mercado global de turismo experiencial y teletrabajo.</p>
+<p><strong>Intervención Estratégica:</strong></p>
+<ul>
+<li><strong>Diseñé y estructuré</strong> 2 Planes de Negocio de Agroturismo Digital para desintermediación comercial, incluyendo CAPEX, OPEX, P&amp;L proyectado a 1 año y cálculo de ROI (4-5 meses) como entregable de factibilidad.</li>
+<li><strong>Modelé</strong> en QGIS la georreferenciación de nodos bio-culturales y rutas de baja intervención ecológica en la Sierra Nevada y Zona Bananera, definiendo trazados seguros para turistas internacionales.</li>
+<li><strong>Desarrollé</strong> 3 prototipos web funcionales (Landing Pages + Simulador Airbnb) en menos de 2 semanas como MVP para demostrar capacidad de transformación digital en territorio.</li>
+<li><strong>Estructuré</strong> modelos operativos "Full-Day" y "Masterclass 7 Días" con márgenes de utilidad neta superiores al 50%, hackeando la cadena de valor del banano de exportación y el café de especialidad para retener capital en origen.</li>
+</ul>
+<p><strong>Escalabilidad / Evidencia:</strong> Modelo de PoC (Proof of Concept) replicable en cualquier minifundio agrícola con infraestructura básica preexistente. La metodología de empaquetamiento de procesos agroindustriales como servicios turísticos premium es transferible a otras cadenas de valor.</p>
+<p>[EVIDENCIA TÉCNICA - PROTOTIPOS WEB FUNCIONALES]:</p>
+<p><a href="https://jcuetot.github.io/airbnb_fao_convocatoria/index.html">Simulador de Reservas (MVP Tipo Airbnb)</a>
+<a href="https://jcuetot.github.io/Finca_La_Dos/">Prototipo Finca La Dos (Banano de Exportación)</a>
+<a href="https://jcuetot.github.io/Finca_El_Paraiso_Cafe">Prototipo Finca El Paraíso (Café de Especialidad)</a></p>
+                    </div>
+                </section>
+                
+
+                
+
+                
+
+            </div>
+
+            <div style="margin-top:var(--espaciado-2xl);text-align:center">
+                <a href="./index.html" class="btn-volver-catalogo">← Volver al Catálogo de Proyectos</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer-texto">
+        &copy; <span id="anio-footer">2026</span> Juan Luis Cueto Tilano. Todos los derechos reservados. Ingenier&iacute;a Ambiental, Sostenibilidad &amp; Desarrollo Territorial.
+    </p>
+</footer>
+
+<script src="../assets/js/principal.js" defer></script>
+<script src="../assets/js/componentes.js" defer></script>
+<script src="../assets/js/moneda.js" defer></script>
+<script src="../assets/js/chatbot.js" defer data-ruta-base="../"></script>
+
+
+
+</body>
+</html>

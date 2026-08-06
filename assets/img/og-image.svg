@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#022c22"/>
+      <stop offset="50%" style="stop-color:#047857"/>
+      <stop offset="100%" style="stop-color:#065f46"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#6ee7b7"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+    <pattern id="dots" width="60" height="60" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="rgba(255,255,255,0.04)"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <rect x="0" y="0" width="8" height="630" fill="url(#accent)"/>
+
+  <circle cx="100" cy="100" r="200" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="2"/>
+  <circle cx="1100" cy="530" r="300" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="2"/>
+
+  <rect x="120" y="140" width="160" height="160" rx="32" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <text x="200" y="255" font-family="system-ui, -apple-system, sans-serif" font-size="82" font-weight="800" fill="#34d399" text-anchor="middle" letter-spacing="4">JC</text>
+
+  <text x="340" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="700" fill="#ffffff" letter-spacing="1">Juan Luis Cueto Tilano</text>
+
+  <line x1="340" y1="235" x2="1100" y2="235" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+  <text x="340" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="#6ee7b7">Ingeniero Ambiental y Sanitario</text>
+
+  <text x="340" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#a7f3d0">Gerencia y Formulación de Proyectos Socioambientales</text>
+
+  <rect x="0" y="420" width="1200" height="1" fill="rgba(255,255,255,0.08)"/>
+
+  <g transform="translate(120, 480)">
+    <rect x="0" y="0" width="8" height="8" rx="2" fill="#34d399" opacity="0.6"/>
+    <text x="18" y="8" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#a7f3d0">Desarrollo Rural Territorial</text>
+
+    <rect x="280" y="0" width="8" height="8" rx="2" fill="#34d399" opacity="0.6"/>
+    <text x="298" y="8" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#a7f3d0">Saneamiento Ambiental</text>
+
+    <rect x="520" y="0" width="8" height="8" rx="2" fill="#34d399" opacity="0.6"/>
+    <text x="538" y="8" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#a7f3d0">Cooperación Internacional</text>
+
+    <rect x="800" y="0" width="8" height="8" rx="2" fill="#34d399" opacity="0.6"/>
+    <text x="818" y="8" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#a7f3d0">Transformación Digital</text>
+  </g>
+
+  <circle cx="1100" cy="80" r="4" fill="#34d399" opacity="0.4"/>
+  <circle cx="1080" cy="100" r="4" fill="#34d399" opacity="0.3"/>
+  <circle cx="1120" cy="100" r="4" fill="#34d399" opacity="0.3"/>
+</svg>

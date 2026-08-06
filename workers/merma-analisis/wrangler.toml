@@ -1,0 +1,6 @@
+name = "merma-analisis"
+main = "src/entry.py"
+compatibility_flags = ["python_workers"]
+
+[observability]
+enabled = true

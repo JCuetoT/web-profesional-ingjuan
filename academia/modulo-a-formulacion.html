@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Curso exprés: Diagnóstico Cero y Estructura de Proyectos. Aprende a definir el problema central antes de formular soluciones. 5 módulos, 5 minutos.">
+<meta property="og:title" content="Curso: Diagnóstico Cero | Academia | Juan Luis Cueto">
+<meta property="og:description" content="Curso exprés de 5 minutos: define el problema central, arma la estructura causal y blinda tu proyecto contra el scope creep. Con casos reales y checklist interactivo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.ingenierojuancueto.com/academia/modulo-a-formulacion.html">
+<meta property="og:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Curso: Diagnóstico Cero">
+<meta name="twitter:description" content="Curso exprés de 5 minutos: define el problema central antes de planear la solución.">
+<meta name="twitter:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+<link rel="canonical" href="https://www.ingenierojuancueto.com/academia/modulo-a-formulacion.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23047857'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3EJC%3C/text%3E%3C/svg%3E">
+<title>Curso: Diagnóstico Cero | Academia</title>
+<link rel="stylesheet" href="../assets/css/main.min.css">
+<link rel="stylesheet" href="../assets/css/chat.css">
+<link rel="preconnect" href="https://script.google.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOccupationalProgram",
+  "name": "Curso: Diagnóstico Cero y Estructura de Proyectos",
+  "provider": { "@type": "Person", "name": "Juan Luis Cueto Tilano" },
+  "timeRequired": "PT5M",
+  "url": "https://www.ingenierojuancueto.com/academia/modulo-a-formulacion.html"
+}
+</script>
+<style>
+.curso-hero{text-align:center;padding:var(--espaciado-3xl,4rem) 0 var(--espaciado-2xl,3rem)}
+.curso-hero-badge{display:inline-flex;align-items:center;gap:.375rem;background:var(--color-acento-esmeralda-claro,rgba(4,120,87,.1));color:var(--color-acento-esmeralda,#047857);font-size:.75rem;font-weight:700;padding:.25rem .75rem;border-radius:var(--radio-full)}
+.curso-hero h1{font-size:clamp(1.5rem,3vw,2.25rem);margin:.75rem 0 .5rem}
+.curso-hero .sub{color:var(--color-texto-secundario,#475569);max-width:36rem;margin:0 auto;font-size:.9375rem}
+.curso-meta{display:flex;justify-content:center;gap:var(--espaciado-md);flex-wrap:wrap;margin-top:var(--espaciado-md);color:var(--color-texto-secundario,#475569);font-size:.8125rem}
+.curso-meta span{display:flex;align-items:center;gap:.25rem}
+.curso-body{max-width:var(--ancho-lectura,42rem);margin:0 auto;padding:0 var(--espaciado-md) var(--espaciado-2xl)}
+.curso-body h2{font-size:1.5rem;margin:var(--espaciado-2xl) 0 var(--espaciado-md);position:relative}
+.curso-body h2::before{content:"";display:block;width:2.5rem;height:3px;background:var(--color-acento-esmeralda,#047857);border-radius:2px;margin-bottom:.5rem}
+.curso-body h3{font-size:1.125rem;margin:var(--espaciado-lg) 0 .375rem;color:var(--color-acento-esmeralda,#047857)}
+.curso-body p{font-size:.9375rem;line-height:1.65;color:var(--color-texto-secundario,#475569);margin-bottom:var(--espaciado-md)}
+
+.tldr{background:var(--color-fondo-tarjetas,#fff);border:1px solid var(--color-borde-suave,#e2e8f0);border-radius:var(--radio-md);padding:var(--espaciado-lg);margin:var(--espaciado-xl) 0}
+.tldr h3{font-size:.8125rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-acento-esmeralda,#047857);margin-bottom:var(--espaciado-sm)}
+.tldr ol{counter-reset:tldr;padding-left:0}
+.tldr li{counter-increment:tldr;font-size:.9375rem;padding:.375rem 0 .375rem 2rem;position:relative}
+.tldr li::before{content:counter(tldr);position:absolute;left:0;top:.375rem;width:1.375rem;height:1.375rem;background:var(--color-acento-esmeralda,#047857);color:#fff;border-radius:50%;font-size:.6875rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+.formula{display:flex;align-items:center;justify-content:center;gap:var(--espaciado-md);flex-wrap:wrap;margin:var(--espaciado-xl) 0}
+.formula-l,.formula-r{background:var(--color-acento-esmeralda,#047857);color:#fff;padding:var(--espaciado-md) var(--espaciado-lg);border-radius:var(--radio-md);font-weight:700;font-size:.9375rem;text-align:center;max-width:18rem}
+.formula-arr{font-size:2rem;color:var(--color-acento-esmeralda,#047857);font-weight:800;line-height:1}
+
+.carrusel{position:relative;background:var(--color-fondo-tarjetas,#fff);border:1px solid var(--color-borde-suave,#e2e8f0);border-radius:var(--radio-md);padding:var(--espaciado-lg);margin:var(--espaciado-lg) 0}
+.carrusel-contador{font-size:.75rem;color:var(--color-texto-secundario,#475569);margin-bottom:.5rem}
+.carrusel-caso{display:none}
+.carrusel-caso.activo{display:block}
+.carrusel-caso h4{font-size:1rem;margin-bottom:.25rem;color:var(--color-acento-esmeralda,#047857)}
+.carrusel-caso p{font-size:.875rem;color:var(--color-texto-secundario,#475569)}
+.carrusel-controles{display:flex;justify-content:space-between;align-items:center;margin-top:var(--espaciado-md)}
+.carrusel-btn{background:var(--color-acento-esmeralda-claro,rgba(4,120,87,.1));color:var(--color-acento-esmeralda,#047857);border:none;padding:.375rem .75rem;border-radius:var(--radio-sm);font-size:.8125rem;font-weight:600;cursor:pointer;transition:background .15s}
+.carrusel-btn:hover{background:var(--color-acento-esmeralda,#047857);color:#fff}
+.carrusel-btn:disabled{opacity:.3;cursor:default;background:var(--color-borde-suave,#e2e8f0);color:var(--color-texto-secundario,#475569)}
+.carrusel-chulito{display:none;align-items:center;gap:.25rem;color:var(--color-acento-esmeralda,#047857);font-weight:700;font-size:.8125rem}
+.carrusel-chulito.mostrar{display:flex}
+
+.modulo-tag{display:inline-block;background:var(--color-acento-esmeralda-claro,rgba(4,120,87,.1));color:var(--color-acento-esmeralda,#047857);font-size:.6875rem;font-weight:700;padding:.125rem .5rem;border-radius:var(--radio-xs);margin-bottom:.375rem}
+
+.tree{display:flex;flex-direction:column;align-items:center;gap:.25rem;margin:var(--espaciado-lg) 0;font-size:.875rem}
+.tree-node{background:var(--color-fondo-tarjetas,#fff);border:1px solid var(--color-borde-suave,#e2e8f0);padding:.5rem 1rem;border-radius:var(--radio-sm);text-align:center;font-weight:600}
+.tree-node.root{background:var(--color-acento-esmeralda,#047857);color:#fff;border-color:var(--color-acento-esmeralda,#047857)}
+.tree-down{color:var(--color-acento-esmeralda,#047857);font-size:1.25rem;line-height:1}
+.tree-branch{display:flex;gap:var(--espaciado-lg);flex-wrap:wrap;justify-content:center}
+.tree-label{font-size:.6875rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-texto-secundario,#475569);text-align:center;margin:.25rem 0}
+
+.checklist{background:var(--color-fondo-tarjetas,#fff);border:1px solid var(--color-borde-suave,#e2e8f0);border-radius:var(--radio-md);padding:var(--espaciado-lg);margin:var(--espaciado-xl) 0}
+.checklist h3{font-size:1.125rem;margin-bottom:var(--espaciado-sm)}
+.checklist-item{display:flex;align-items:flex-start;gap:.5rem;padding:.5rem 0;border-bottom:1px solid var(--color-borde-suave,#e2e8f0);font-size:.9375rem}
+.checklist-item:last-child{border-bottom:none}
+.checklist-item input[type=checkbox]{margin-top:.25rem;accent-color:var(--color-acento-esmeralda,#047857);width:1.125rem;height:1.125rem}
+.checklist-progreso{font-size:.8125rem;color:var(--color-texto-secundario,#475569);margin-top:var(--espaciado-sm);padding-top:var(--espaciado-sm);border-top:1px solid var(--color-borde-suave,#e2e8f0)}
+.progreso-lleno{color:var(--color-acento-esmeralda,#047857);font-weight:700}
+
+.chain{display:flex;align-items:center;justify-content:center;gap:var(--espaciado-sm);flex-wrap:wrap;margin:var(--espaciado-lg) 0;font-size:.8125rem;font-weight:600}
+.chain-node{background:var(--color-acento-esmeralda-claro,rgba(4,120,87,.1));color:var(--color-acento-esmeralda,#047857);padding:.375rem .75rem;border-radius:var(--radio-sm)}
+.chain-arr{color:var(--color-acento-esmeralda,#047857)}
+
+.volver{text-align:center;margin-top:var(--espaciado-3xl);padding-bottom:var(--espaciado-3xl)}
+.volver a{color:var(--color-acento-esmeralda,#047857);font-weight:600;font-size:.9375rem}
+
+html.tema-oscuro .tldr,
+html.tema-oscuro .carrusel,
+html.tema-oscuro .checklist,
+html.tema-oscuro .tree-node{background:var(--color-fondo-tarjetas,#1e293b)}
+html.tema-oscuro .carrusel-btn{background:rgba(4,120,87,.2)}
+html.tema-oscuro .carrusel-btn:disabled{background:var(--color-borde-suave,#334155)}
+</style>
+</head>
+<body class="bg-fondo-principal">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+<div id="barra-progreso-pagina" class="barra-progreso-pagina"></div>
+<header class="nav-header">
+<div class="nav-contenedor">
+<div class="nav-marca">
+<a href="../index.html" class="nav-logo" aria-label="Inicio">JC</a>
+<div>
+<span class="nav-nombre">JUAN LUIS CUETO</span>
+<span class="nav-rol">Ingeniero Ambiental | Gerencia &amp; Formulación</span>
+</div>
+</div>
+<nav class="nav-links" aria-label="Navegación principal">
+<a href="../index.html" class="nav-link">Inicio</a>
+<a href="../proyectos/index.html" class="nav-link">Proyectos y Consultorías</a>
+<a href="../conocimiento/index.html" class="nav-link">Centro de Conocimiento</a>
+</nav>
+<div class="nav-acciones">
+<a href="../contacto.html" class="btn-contacto-nav">Contacto Estratégico</a>
+<button id="btn-tema" class="btn-tema" onclick="toggleDarkMode()" aria-label="Alternar modo oscuro">
+<svg class="icono-tema-luna" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+<svg class="icono-tema-sol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+<button id="btn-menu-movil" class="btn-menu-movil" aria-label="Abrir menú">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+</div>
+</div>
+</header>
+<div id="menu-movil" class="menu-movil">
+<button id="btn-cerrar-menu" class="menu-movil-cerrar" aria-label="Cerrar menú">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+<nav class="menu-movil-links">
+<a href="../index.html">Inicio</a>
+<a href="../proyectos/index.html">Proyectos y Consultorías</a>
+<a href="../conocimiento/index.html">Centro de Conocimiento</a>
+<a href="../contacto.html">Contacto Estratégico</a>
+</nav>
+</div>
+<main id="main-content">
+<section class="seccion seccion-fondo-blanco seccion-con-borde">
+<div class="container">
+<div class="curso-hero">
+<span class="curso-hero-badge">&#x1F4DA; Academia &middot; Curso Expr&eacute;s</span>
+<h1>Diagn&oacute;stico Cero y Estructura de Proyectos</h1>
+<p class="sub">La fase fundacional que decide si tu proyecto ser&aacute; estrategia o apuesta. Defin&eacute; el problema real antes de planear la soluci&oacute;n.</p>
+<div class="curso-meta">
+<span>&#x23F1; Lectura: 5 min</span>
+<span>&#x1F4E6; 5 m&oacute;dulos</span>
+<span>Nivel: formulador</span>
+</div>
+</div>
+<div class="curso-body">
+<div class="tldr">
+<h3>En 1 minuto: lo esencial</h3>
+<ol>
+<li><strong>Define antes de resolver.</strong> Un problema mal formulado es la primera causa de fracaso de un proyecto.</li>
+<li><strong>Usa la fórmula:</strong> Situación negativa &rarr; Sujeto / Territorio. Sin precisión, no hay diagnóstico.</li>
+<li><strong>Cada acción rastreable a una causa.</strong> Si una acción no se conecta a una causa del árbol de problemas, sobra.</li>
+<li><strong>La ambigüedad sale cara.</strong> Problemas vagos ("falta de recursos", "poca participación") generan scope creep: el proyecto se infla y pierde impacto.</li>
+<li><strong>Diagnosticar es respeto.</strong> Es el puente entre la técnica y la realidad del territorio.</li>
+</ol>
+</div>
+
+<h2>Módulo 1 &#x2014; La fórmula innegociable</h2>
+<div class="formula">
+<div class="formula-l">Situación<br>negativa</div>
+<div class="formula-arr">&rarr;</div>
+<div class="formula-r">Sujeto<br>o Territorio</div>
+</div>
+<p>Un problema central no se escribe con palabras vagas. Se construye con una <strong>relación precisa</strong> entre una situación medible y quién o qué la sufre. Si puedes transformarla en un objetivo, ya conoces el problema.</p>
+
+<h3>3 casos reales</h3>
+<div class="carrusel" id="carrusel">
+<div class="carrusel-contador">Caso <span id="caso-idx">1</span> de 3</div>
+<div class="carrusel-caso activo" data-idx="0">
+<h4>Caso productivo &mdash; empleabilidad bananera</h4>
+<p>&#x201C;Bajo nivel de empleabilidad formal de los jóvenes entre 18 y 25 años del Municipio Zona Bananera, Magdalena.&#x201D; La situación negativa es medible (tasa de empleabilidad), el sujeto está definido (jóvenes 18-25) y el territorio es específico.</p>
+</div>
+<div class="carrusel-caso" data-idx="1">
+<h4>Caso desarrollo &mdash; turismo en Torres del Paine</h4>
+<p>&#x201C;Bajo nivel de diversificación de la oferta turística, sustentabilidad y gobernanza en la Zona de Interés Turístico Destino Torres del Paine.&#x201D; Precisión que define la situación y ubica su impacto territorial.</p>
+</div>
+<div class="carrusel-caso" data-idx="2">
+<h4>Caso social &mdash; donación de órganos</h4>
+<p>&#x201C;Poca cultura de donación de órganos en Morelia, Michoacán.&#x201D; En una línea: brecha social medible y reversible, vinculada a una población definida.</p>
+</div>
+<div class="carrusel-controles">
+<button class="carrusel-btn" id="btn-prev" aria-label="Caso anterior">&larr; Anterior</button>
+<span class="carrusel-chulito" id="chulito">&#x2714; Los 3 casos leídos</span>
+<button class="carrusel-btn" id="btn-next" aria-label="Caso siguiente">Siguiente &rarr;</button>
+</div>
+</div>
+
+<h3>Checklist: &#xBF;Mi problema est&aacute; bien redactado?</h3>
+<div class="checklist" id="checklist">
+<div class="checklist-item"><label><input type="checkbox" data-idx="0"> <strong>&#xBF;Es preciso?</strong> La situación negativa está clara y sin ambigüedad.</label></div>
+<div class="checklist-item"><label><input type="checkbox" data-idx="1"> <strong>&#xBF;Es medible?</strong> Existe una variable que permita cuantificar el cambio (tasa, nivel, índice).</label></div>
+<div class="checklist-item"><label><input type="checkbox" data-idx="2"> <strong>&#xBF;Tiene sujeto o territorio?</strong> La población o zona afectada está explícitamente nombrada.</label></div>
+<div class="checklist-item"><label><input type="checkbox" data-idx="3"> <strong>&#xBF;Es reversible?</strong> Declarado como situación negativa, se puede transformar en un objetivo alcanzable.</label></div>
+<div class="checklist-progreso" id="check-prog">&#x2610; 0 de 4 criterios cumplidos</div>
+</div>
+</div>
+
+<h2>Módulo 2 &#x2014; &#xBF;Qué es el Diagnóstico Cero?</h2>
+<p>Es la <strong>fase fundacional</strong> de la formulación, la etapa previa a cualquier solución. Consiste en identificar y definir con precisión el problema central, sus causas y sus efectos. Técnicamente se llama <em>problem framing</em> (encuadre del problema): la forma en que defines el problema determina la calidad de las soluciones.</p>
+<div class="chain">
+<div class="chain-node">Síntoma<br><small>(lo que el beneficiario reporta)</small></div>
+<div class="chain-arr">&rarr;</div>
+<div class="chain-node" style="background:var(--color-acento-esmeralda,#047857);color:#fff">Problema-raíz<br><small>(lo que el formulador diagnostica)</small></div>
+</div>
+<p style="font-size:.8125rem;color:var(--color-texto-secundario)">&#x26A0; El beneficiario siempre llega con un <strong>problema-síntoma</strong>. El formulador es quien debe llegar al problema-raíz. Aceptar el síntoma como problema central = formular soluciones sintomáticas que se ejecutan, se reportan y no resuelven nada.</p>
+
+<h2>Módulo 3 &#x2014; El análisis causal</h2>
+<p>Es el estudio que busca <strong>conectar datos y contexto</strong> para hallar el punto exacto de la falla estructural. No basta con saber <em>que</em> ocurre: hay que descubrir <em>por qué</em>, <em>cuándo empezó</em>, <em>qué lo sostiene</em>. Y reconocer los efectos que confirman que el problema sigue activo.</p>
+<div class="tree">
+<div class="tree-label">Efectos</div>
+<div class="tree-branch">
+<div class="tree-node">Efecto 1</div>
+<div class="tree-node">Efecto 2</div>
+<div class="tree-node">Efecto 3</div>
+</div>
+<div class="tree-down">&#x2193;</div>
+<div class="tree-node root">Problema Central</div>
+<div class="tree-down">&#x2191;</div>
+<div class="tree-label">Causas</div>
+<div class="tree-branch">
+<div class="tree-node">Causa 1</div>
+<div class="tree-node">Causa 2</div>
+<div class="tree-node">Causa 3</div>
+</div>
+</div>
+<p><strong>Rastreabilidad:</strong> cada acción del proyecto debe conectarse directamente a una causa del árbol. Si una acción no traza a ninguna causa, es <strong>scope creep</strong>: no pertenece al proyecto.</p>
+
+<h2>Módulo 4 &#x2014; El costo de la ambigüedad</h2>
+<p>El <em>scope creep</em> (desviación no controlada del alcance) es una de las causas de fracaso — no la única, pero sí una de las más evitables. Empieza antes de ejecutar: cuando no se conoce con precisión el problema que se intenta resolver. <strong>Problemas vagos generan soluciones vagas. Proyectos sin causalidad terminan sin impacto.</strong></p>
+<div class="chain" style="font-size:.75rem">
+<div class="chain-node">Diagnóstico<br>vago</div>
+<div class="chain-arr">&rarr;</div>
+<div class="chain-node">Alcance<br>inflado</div>
+<div class="chain-arr">&rarr;</div>
+<div class="chain-node">Riesgo<br>operativo</div>
+<div class="chain-arr">&rarr;</div>
+<div class="chain-node" style="background:#fef3c7;color:#92400e">Sin<br>impacto</div>
+</div>
+<p style="font-size:.8125rem;color:var(--color-texto-secundario)">&#x1F4A1; Ejemplo: entregar bicicletas sin saber cuántos niños las necesitan, si son seguras o si el obstáculo no era el transporte sino la distancia. Diagnosticar no retrasa: <strong>protege</strong>.</p>
+
+<h2>Módulo 5 &#x2014; Diagnosticar es un acto de respeto</h2>
+<p>En proyectos rurales, sociales o ambientales, el diagnóstico es el <strong>puente entre la técnica y la realidad</strong> del territorio. Permite evitar la imposición de soluciones externas y construir desde los <strong>datos y el conocimiento directo del problema con la propia población</strong> — no desde supuestos. Conocer el problema desde adentro, con evidencia levantada en el lugar, es lo que hace que el proyecto responda a la verdad del contexto.</p>
+
+<details style="margin:var(--espaciado-xl) 0;font-size:.875rem;color:var(--color-texto-secundario)">
+<summary style="cursor:pointer;font-weight:600;color:var(--color-texto-principal);">Referencias (9)</summary>
+<ol style="margin-top:.5rem;padding-left:1.25rem;font-size:.8125rem;line-height:1.8">
+<li>Ortegon, Pacheco &amp; Prieto (2005). Metodología del marco lógico. CEPAL/ILPES, Manuales No. 42.</li>
+<li>Keusters et al. (2024). Empathic ability as a driver for project management. IJPM, 42(4).</li>
+<li>Magistretti, Pham &amp; Dell&rsquo;Era (2025). The creative process of problem framing for innovation. JPIM.</li>
+<li>Pham, Magistretti &amp; Dell&rsquo;Era (2023). How do you frame ill-defined problems? CIM, 32(3).</li>
+<li>Hoerl, Kuonen &amp; Redman (2022). Problem framing: Essential to successful statistical engineering. Quality Engineering, 34(4).</li>
+<li>Varajao, Lourenco &amp; Gomes (2022). Models and methods for IS project success evaluation. Heliyon, 8(12).</li>
+<li>PMI (2021). Guía del PMBOK, 7.&#xAA; ed.</li>
+<li>Flores, Heras &amp; Julian (2022). A new methodological framework for project design. Electronics, 11(18).</li>
+<li>Rodriguez et al. (2021). Desafíos de gestión del turismo ZOIT Torres del Paine. Rev. Geogr. Valparaíso, (58).</li>
+</ol>
+</details>
+
+<div class="volver">
+<a href="../conocimiento/index.html">&larr; Volver al Centro de Conocimiento</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<p class="site-footer-texto">
+&copy; <span id="anio-footer">2026</span> Juan Luis Cueto Tilano. Todos los derechos reservados. Ingeniería Ambiental, Sostenibilidad &amp; Desarrollo Territorial.
+</p>
+</footer>
+<script src="../assets/js/principal.js" defer></script>
+<script src="../assets/js/componentes.js" defer></script>
+<script src="../assets/js/chatbot.js" defer data-ruta-base="../"></script>
+<script>
+(function(){
+  var casos=document.querySelectorAll(".carrusel-caso");
+  if(!casos.length)return;
+  var idx=0,total=casos.length,leidos=new Set(),stored=localStorage.getItem("dc-casos-leidos");
+  if(stored)JSON.parse(stored).forEach(function(i){leidos.add(i)});
+  var btnPrev=document.getElementById("btn-prev"),
+      btnNext=document.getElementById("btn-next"),
+      lbl=document.getElementById("caso-idx"),
+      chulito=document.getElementById("chulito");
+  function mostrar(i){
+    casos.forEach(function(c){c.classList.remove("activo")});
+    casos[i].classList.add("activo");
+    if(lbl)lbl.textContent=i+1;
+    leidos.add(i);
+    localStorage.setItem("dc-casos-leidos",JSON.stringify(Array.from(leidos)));
+    if(leidos.size>=total&&chulito)chulito.classList.add("mostrar");
+    if(btnPrev)btnPrev.disabled=i===0;
+    if(btnNext)btnNext.disabled=i===total-1;
+  }
+  if(btnPrev)btnPrev.addEventListener("click",function(){if(idx>0)mostrar(--idx)});
+  if(btnNext)btnNext.addEventListener("click",function(){if(idx<total-1)mostrar(++idx)});
+  if(leidos.size>=total&&chulito)chulito.classList.add("mostrar");
+  mostrar(0);
+})();
+(function(){
+  var cbs=document.querySelectorAll("#checklist input[type=checkbox]");
+  if(!cbs.length)return;
+  var prog=document.getElementById("check-prog"),total=cbs.length;
+  function update(){
+    var n=document.querySelectorAll("#checklist input[type=checkbox]:checked").length;
+    if(prog)prog.innerHTML=n===total?"&#x2714; &#x201C;Mi problema est&aacute; bien redactado&#x201D; &mdash; los "+total+" criterios cumplidos":"&#x2610; "+n+" de "+total+" criterios cumplidos";
+  }
+  cbs.forEach(function(cb){cb.addEventListener("change",update)});
+  update();
+})();
+</script>
+</body>
+</html>

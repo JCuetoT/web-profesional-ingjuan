@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+    <defs>
+        <!-- Degradado de fondo: Azul cobalto profundo -->
+        <radialGradient id="bg-gradient" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#142A45" />
+            <stop offset="100%" stop-color="#0B192C" />
+        </radialGradient>
+
+        <!-- Degradado del núcleo: Verde esmeralda a Cian -->
+        <linearGradient id="core-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#10B981" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.4"/>
+        </linearGradient>
+
+        <!-- Degradado para los trazos de circuito (T-Shape) -->
+        <linearGradient id="circuit-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.4"/>
+            <stop offset="50%" stop-color="#22D3EE" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.4"/>
+        </linearGradient>
+
+        <!-- Máscara de recorte circular para el avatar -->
+        <clipPath id="avatar-clip">
+            <circle cx="250" cy="250" r="240" />
+        </clipPath>
+    </defs>
+
+    <!-- Base Neomórfica / Sombra exterior sutil -->
+    <circle cx="250" cy="250" r="245" fill="#050E18" />
+    
+    <!-- Fondo, Grilla Técnica y Topografía -->
+    <g id="fondo-y-grilla" clip-path="url(#avatar-clip)">
+        <!-- Lienzo base -->
+        <circle cx="250" cy="250" r="240" fill="url(#bg-gradient)" />
+        
+        <!-- Grilla técnica de proyecto -->
+        <g stroke="#06B6D4" stroke-width="1" stroke-opacity="0.08" fill="none">
+            <path d="M 0 50 L 500 50 M 0 100 L 500 100 M 0 150 L 500 150 M 0 200 L 500 200 M 0 250 L 500 250 M 0 300 L 500 300 M 0 350 L 500 350 M 0 400 L 500 400 M 0 450 L 500 450" />
+            <path d="M 50 0 L 50 500 M 100 0 L 100 500 M 150 0 L 150 500 M 200 0 L 200 500 M 250 0 L 250 500 M 300 0 L 300 500 M 350 0 L 350 500 M 400 0 L 400 500 M 450 0 L 450 500" />
+        </g>
+
+        <!-- Líneas tenues topográficas (Naturaleza/Terreno) -->
+        <g stroke="#10B981" stroke-width="1.5" stroke-opacity="0.15" fill="none">
+            <path d="M 50 250 C 100 150, 200 150, 250 250 S 400 350, 450 250" stroke-dasharray="10 5" />
+            <path d="M 30 350 C 100 280, 200 280, 250 350 S 400 420, 470 350" stroke-dasharray="20 10" />
+            <path d="M 30 150 C 100 220, 200 220, 250 150 S 400 80, 470 150" stroke-dasharray="5 15" />
+            <path d="M 80 400 C 150 350, 250 350, 300 400 S 450 450, 420 400" stroke-dasharray="2 8" />
+        </g>
+    </g>
+
+    <!-- Borde Interior: Escala de medición / Cronograma Gantt -->
+    <g id="borde-cronograma-gantt">
+        <!-- Anillo estructural base -->
+        <circle cx="250" cy="250" r="235" fill="none" stroke="#1E3A5F" stroke-width="2" />
+        <!-- Segmentos discontinuos (Gantt/Medición) -->
+        <circle cx="250" cy="250" r="220" fill="none" stroke="#06B6D4" stroke-width="4" stroke-opacity="0.5" stroke-dasharray="15 5 25 5 10 10" />
+        <!-- Anillo fino de precisión -->
+        <circle cx="250" cy="250" r="210" fill="none" stroke="#10B981" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="2 6" />
+    </g>
+
+    <!-- Detalle T-Shaped: Trazos de circuitos y flujos de datos -->
+    <g id="circuito-t-shaped">
+        <!-- Trazo principal de la 'T' (Barra vertical y horizontal) con resplandor -->
+        <path d="M 130 150 L 370 150 M 250 150 L 250 370" fill="none" stroke="#06B6D4" stroke-width="12" stroke-linecap="round" stroke-opacity="0.15" />
+        <path d="M 130 150 L 370 150 M 250 150 L 250 370" fill="none" stroke="url(#circuit-gradient)" stroke-width="4" stroke-linecap="round" />
+        
+        <!-- Nodos principales de la 'T' -->
+        <circle cx="250" cy="150" r="7" fill="#0B192C" stroke="#22D3EE" stroke-width="3" />
+        <circle cx="130" cy="150" r="5" fill="#0B192C" stroke="#10B981" stroke-width="2" />
+        <circle cx="370" cy="150" r="5" fill="#0B192C" stroke="#10B981" stroke-width="2" />
+        <circle cx="250" cy="370" r="5" fill="#0B192C" stroke="#10B981" stroke-width="2" />
+
+        <!-- Ramificaciones de datos (Visión estratégica y técnica) -->
+        <!-- Izquierda (Gestión) -->
+        <path d="M 130 150 L 130 110 L 90 110" fill="none" stroke="#06B6D4" stroke-width="2" />
+        <circle cx="90" cy="110" r="4" fill="#22D3EE" />
+        <path d="M 200 150 L 200 120 L 170 120" fill="none" stroke="#06B6D4" stroke-width="1.5" />
+        <circle cx="170" cy="120" r="3" fill="#10B981" />
+
+        <!-- Derecha (Gestión) -->
+        <path d="M 370 150 L 370 190 L 410 190" fill="none" stroke="#06B6D4" stroke-width="2" />
+        <circle cx="410" cy="190" r="4" fill="#22D3EE" />
+        <path d="M 300 150 L 300 180 L 330 180" fill="none" stroke="#06B6D4" stroke-width="1.5" />
+        <circle cx="330" cy="180" r="3" fill="#10B981" />
+
+        <!-- Abajo (Profundidad Técnica) -->
+        <path d="M 250 370 L 200 420" fill="none" stroke="#06B6D4" stroke-width="2" />
+        <circle cx="200" cy="420" r="4" fill="#22D3EE" />
+        <path d="M 250 370 L 300 420" fill="none" stroke="#06B6D4" stroke-width="2" />
+        <circle cx="300" cy="420" r="4" fill="#22D3EE" />
+        
+        <!-- Detalles micro en la línea vertical -->
+        <path d="M 250 250 L 220 250 M 250 250 L 280 250" fill="none" stroke="#22D3EE" stroke-width="2" />
+    </g>
+
+    <!-- Centro: El Núcleo Bio-Digital (Molécula / Purificación) -->
+    <g id="nucleo-bio-digital">
+        <!-- Aura de filtración translúcida -->
+        <circle cx="250" cy="250" r="80" fill="#10B981" fill-opacity="0.05" />
+        <circle cx="250" cy="250" r="60" fill="#06B6D4" fill-opacity="0.1" />
+        
+        <!-- Estructura hexagonal técnica -->
+        <polygon points="250,205 290,227.5 290,272.5 250,295 210,272.5 210,227.5" fill="url(#core-gradient)" fill-opacity="0.7" stroke="#10B981" stroke-width="2" stroke-linejoin="round"/>
+        
+        <!-- Superposición de círculos: Evoca molécula H2O y filtración -->
+        <circle cx="250" cy="225" r="30" fill="#10B981" fill-opacity="0.3" stroke="#22D3EE" stroke-width="1.5" />
+        <circle cx="222" cy="270" r="30" fill="#06B6D4" fill-opacity="0.3" stroke="#22D3EE" stroke-width="1.5" />
+        <circle cx="278" cy="270" r="30" fill="#06B6D4" fill-opacity="0.3" stroke="#22D3EE" stroke-width="1.5" />
+        
+        <!-- Núcleo central brillante (Inteligencia del asistente) -->
+        <circle cx="250" cy="250" r="14" fill="#0B192C" stroke="#22D3EE" stroke-width="2" />
+        <circle cx="250" cy="250" r="5" fill="#22D3EE" />
+    </g>
+</svg>

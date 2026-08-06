@@ -1,0 +1,51 @@
+﻿/*
+  Cloudflare Pages Headers
+*/
+
+/*
+  Security headers for all HTML pages
+*/
+*.html
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/*
+  Cache static assets aggressively
+*/
+*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+*.pdf
+  Cache-Control: public, max-age=86400
+
+/*
+  Allow Google Apps Script API calls via CORS for the chatbot
+*/
+/assets/js/chatbot.js
+  Access-Control-Allow-Origin: *
+
+/*
+  Sitemap and robots: short cache
+*/
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600

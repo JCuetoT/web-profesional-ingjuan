@@ -52,7 +52,7 @@ inicializar_sesion()
 # 5. BARRA LATERAL (SIDEBAR)
 # ============================================================
 with st.sidebar:
-    st.title("📋 Panel de Entrada")
+    st.title(" Panel de Entrada")
     st.markdown("---")
 
     st.subheader("➕ Agregar defecto")
@@ -146,7 +146,7 @@ else:
     col_izq, col_der = st.columns([1, 1])
 
     with col_izq:
-        st.subheader("📈 Distribución por Categoría")
+        st.subheader("Distribución por Categoría")
 
         # Crear grafico de pastel con Plotly
         fig = px.pie(
@@ -172,7 +172,7 @@ else:
         st.plotly_chart(fig, use_container_width=True)
 
     with col_der:
-        st.subheader("📋 Tabla Resumen")
+        st.subheader("Tabla Resumen")
 
         # Crear tabla con formato
         df_tabla = df_agrupado[["Categoria", "Total_Kg", "Porcentaje"]].copy()
@@ -207,10 +207,10 @@ else:
 
     # Mensajes de recomendacion segun la categoria
     mensajes_recomendacion = {
-        "Defecto de Campo": "Se recomienda capacitar al personal en tecnicas de corte, manejo de la fruta durante la cosecha y revisar las labores culturales de precosecha.",
-        "Defecto de Empacadora": "Se recomienda calibrar los equipos de la empacadora, revisar los materiales de embalaje y los tiempos de procesamiento.",
-        "Defecto Fisiologico": "Se recomienda revisar las condiciones de temperatura, humedad y manejo durante el transporte y almacenamiento.",
-        "Defecto por Microorganismos": "Se recomienda revisar el programa de fungicidas y bactericidas, y mejorar la ventilacion en almacenamiento y transporte.",
+        "Defecto de Campo": "Se recomienda supervisión y sensibilización del personal sobre el correcto manejo de la fruta durante la cosecha.",
+        "Defecto de Empacadora": "Se recomienda sensibilizar y capacitar al personal en las labores de empacadora.",
+        "Defecto Fisiologico": "Se debe contemplar la visita de un técncico para diagnosticar la situación.",
+        "Defecto por Microorganismos": "Se recomienda acompañamiento de un ingeniero agronómico.",
         "Defectos por Insectos": "Se recomienda revisar el manejo integrado de plagas, monitoreo de trampas y condiciones sanitarias del cultivo.",
     }
 

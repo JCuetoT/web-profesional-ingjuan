@@ -4,7 +4,7 @@ Sitio web profesional de **Juan Luis Cueto Tilano** — Ingeniero Ambiental y Sa
 
 - **Dominio:** [www.ingenierojuancueto.com](https://www.ingenierojuancueto.com)
 - **Stack:** HTML5, CSS3, JavaScript vanilla (sitio estatico)
-- **Hosting:** Cloudflare Pages
+- **Hosting:** GitHub Pages + Cloudflare (DNS/CDN)
 - **Testing:** Playwright (e2e)
 
 ## Estructura del proyecto

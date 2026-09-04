@@ -149,8 +149,14 @@ function setupEventListeners() {
 
   timeUnitTypeSelect.addEventListener("change", () => {
     unitLabelSpan.textContent = timeUnitTypeSelect.value;
-    calculateNextTimeValue();
+    if (compostRecords.length > 0) {
+      applyAutoTimeValue();
+    } else {
+      calculateNextTimeValue();
+    }
   });
+
+  recordDateInput.addEventListener("change", applyAutoTimeValue);
 
   monitoringForm.addEventListener("submit", handleFormSubmit);
 
@@ -169,6 +175,27 @@ function calculateNextTimeValue() {
   } else {
     timeUnitValueInput.value = 1;
   }
+}
+
+// Sugiere el número de día/semana según la fecha, tomando como ancla el registro más antiguo
+function suggestTimeValueFromDate(dateStr, type, records) {
+  const relevant = records.filter(r => r.timeUnitType === type);
+  const pool = relevant.length > 0 ? relevant : records;
+  if (pool.length === 0 || !dateStr) return 1;
+  const anchor = Math.min(...pool.map(r => new Date(r.date).getTime()));
+  const diffDays = Math.floor((new Date(dateStr).getTime() - anchor) / 86400000);
+  const value = type === "Semana" ? Math.floor(diffDays / 7) + 1 : diffDays + 1;
+  return Math.max(1, value);
+}
+
+// Autocompleta el campo "Número (Día/Semana #)" a partir de la fecha seleccionada
+function applyAutoTimeValue() {
+  if (compostRecords.length === 0) {
+    calculateNextTimeValue();
+    return;
+  }
+  if (!recordDateInput.value) return;
+  timeUnitValueInput.value = suggestTimeValueFromDate(recordDateInput.value, timeUnitTypeSelect.value, compostRecords);
 }
 
 // --- EVALUACIÓN DE FASES DEL COMPOSTAJE ---
@@ -364,11 +391,18 @@ function handleFormSubmit(e) {
 
   const operator = operatorNameInput.value.trim();
   const timeUnitType = timeUnitTypeSelect.value;
-  const timeUnitValue = parseInt(timeUnitValueInput.value, 10);
+  let timeUnitValue = parseInt(timeUnitValueInput.value, 10);
   const date = recordDateInput.value;
   const temperature = parseFloat(temperatureInput.value);
   const oxygen = parseFloat(oxygenLevelInput.value);
   const notes = recordNotesInput.value.trim();
+
+  // Si el número de día/semana quedó vacío, asumir día 1 (o derivarlo de la fecha si ya hay registros)
+  if (isNaN(timeUnitValue)) {
+    timeUnitValue = recordDateInput.value && compostRecords.length > 0
+      ? suggestTimeValueFromDate(recordDateInput.value, timeUnitType, compostRecords)
+      : 1;
+  }
 
   if (!operator || isNaN(timeUnitValue) || isNaN(temperature) || isNaN(oxygen)) {
     showToast("Por favor complete los campos obligatorios.", "error");
@@ -888,10 +922,10 @@ function parseAndLoadCsv(csvText) {
       return;
     }
 
-    compostRecords = newRecords;
-    sortRecordsChronologically();
-    refreshAll();
-    calculateNextTimeValue();
+compostRecords = newRecords;
+        sortRecordsChronologically();
+        refreshAll();
+        applyAutoTimeValue();
 
     if (compostRecords.length > 0) {
       operatorNameInput.value = compostRecords[compostRecords.length - 1].operator;

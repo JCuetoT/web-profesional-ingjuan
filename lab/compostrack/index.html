@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CompostTrack BioPro: herramienta de monitoreo y análisis de compostaje. Registro de temperatura, oxígeno y humedad, diagnóstico de fase biológica, alertas de higienización e informe técnico en PDF.">
+  <meta property="og:title" content="CompostTrack: Monitoreo y Análisis de Compostaje | Ingeniero Ambiental &amp; Sanitario">
+  <meta property="og:description" content="Herramienta de campo para el registro y criterio técnico del operador de compostaje. Curva térmica, alertas de higienización (EPA 503) e informe PDF con firma del consultor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ingenierojuancueto.com/lab/compostrack/">
+  <meta property="og:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CompostTrack: Monitoreo y Análisis de Compostaje">
+  <meta name="twitter:description" content="Herramienta de campo para el registro y criterio técnico del operador de compostaje.">
+  <meta name="twitter:image" content="https://www.ingenierojuancueto.com/assets/img/og-image.png">
+  <link rel="canonical" href="https://www.ingenierojuancueto.com/lab/compostrack/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23047857'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3EJC%3C/text%3E%3C/svg%3E">
+  <title>CompostTrack: Monitoreo y Análisis de Compostaje</title>
+
+  <link rel="stylesheet" href="../../assets/css/main.min.css">
+  <link rel="stylesheet" href="../../assets/css/chat.css">
+  <link rel="stylesheet" href="css/app.css">
+
+  <link rel="preconnect" href="https://script.google.com">
+
+  <!-- App: Tailwind CSS + dependencias -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-fondo-principal">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<div id="barra-progreso-pagina" class="barra-progreso-pagina"></div>
+
+<header class="nav-header">
+    <div class="nav-contenedor">
+        <div class="nav-marca">
+            <a href="../../index.html" class="nav-logo" aria-label="Inicio">JC</a>
+            <div>
+                <span class="nav-nombre">JUAN LUIS CUETO</span>
+                <span class="nav-rol">Ingeniero Ambiental | Gerencia &amp; Formulaci&oacute;n</span>
+            </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Navegación principal">
+            <a href="../../index.html" class="nav-link">Inicio</a>
+            <a href="../../proyectos/index.html" class="nav-link">Proyectos y Consultorías</a>
+            <a href="../../conocimiento/index.html" class="nav-link">Centro de Conocimiento</a>
+        </nav>
+
+        <div class="nav-acciones">
+            <a href="../../contacto.html" class="btn-contacto-nav">Contacto Estratégico</a>
+            <button id="btn-tema" class="btn-tema" onclick="toggleDarkMode()" aria-label="Alternar modo oscuro">
+                <svg class="icono-tema-luna" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icono-tema-sol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button id="btn-menu-movil" class="btn-menu-movil" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div id="menu-movil" class="menu-movil">
+    <button id="btn-cerrar-menu" class="menu-movil-cerrar" aria-label="Cerrar menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="menu-movil-links">
+        <a href="../../index.html">Inicio</a>
+        <a href="../../proyectos/index.html">Proyectos y Consultorías</a>
+        <a href="../../conocimiento/index.html">Centro de Conocimiento</a>
+        <a href="../../contacto.html">Contacto Estratégico</a>
+    </nav>
+</div>
+
+<main id="main-content">
+
+  <!-- Mensajes flotantes / Toasts -->
+  <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none no-print"></div>
+
+  <!-- OVERLAY DE INICIO: botón para arrancar el monitoreo sin datos de ejemplo -->
+  <div id="startOverlay" class="fixed inset-0 z-[60] overflow-y-auto bg-stone-900/80 backdrop-blur-sm flex items-center justify-center p-4 no-print">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden my-auto">
+      <div class="bg-gradient-to-br from-emerald-700 to-emerald-800 px-6 py-8 text-white text-center relative overflow-hidden">
+        <div class="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center shadow-lg">
+          <i class="fa-solid fa-seedling text-3xl text-emerald-100"></i>
+        </div>
+        <h1 class="text-xl sm:text-2xl font-extrabold mt-4 tracking-tight">CompostTrack BioPro</h1>
+        <p class="text-emerald-100 text-xs sm:text-sm mt-1 font-medium">Monitoreo y análisis de pilas de compostaje</p>
+      </div>
+      <div class="p-6 sm:p-8 space-y-5">
+        <div class="text-sm text-stone-600 leading-relaxed">
+          Herramienta de campo para registrar <strong>temperatura, oxígeno y humedad</strong>, diagnosticar la fase biológica y generar el informe técnico en PDF.
+        </div>
+        <ul class="space-y-2.5 text-sm text-stone-700">
+          <li class="flex items-start gap-2.5">
+            <i class="fa-solid fa-temperature-high text-amber-600 mt-1"></i>
+            <span>Curva térmica y de humedad en tiempo real</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+            <span>Alertas de higienización (EPA 503) e hipertermia</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="fa-solid fa-file-pdf text-red-600 mt-1"></i>
+            <span>Informe técnico con firma del operador y del consultor</span>
+          </li>
+        </ul>
+        <button id="btnStartMonitoring" class="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2 cursor-pointer text-sm">
+          <i class="fa-solid fa-play"></i> Iniciar monitoreo
+        </button>
+        <p class="text-[11px] text-stone-400 text-center leading-relaxed">
+          Desarrollada por <strong class="text-stone-600">Ing. Juan L. Cueto Tilano</strong><br class="sm:hidden"> Consultoría y Monitoreo de Compostaje
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA SUPERIOR CON FIRMA Y AVAL DEL CONSULTOR -->
+  <header class="bg-stone-900 text-stone-100 shadow-lg border-b-4 border-emerald-600 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center gap-4">
+
+      <!-- Marca y Especialista -->
+      <div class="flex items-center space-x-3.5">
+        <div class="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white p-2.5 rounded-xl shadow-md flex items-center justify-center">
+          <i class="fa-solid fa-seedling text-2xl"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="text-xl font-extrabold tracking-tight text-white flex items-center gap-1.5">
+              Compostaje (monitoreo y seguimiento) <span class="text-xs bg-emerald-500/20 text-emerald-300 font-semibold px-2 py-0.5 rounded-full border border-emerald-500/40">v1.0</span>
+            </h1>
+            <span class="text-xs text-stone-400 hidden sm:inline">|</span>
+            <span class="text-xs bg-stone-800 text-emerald-200 border border-stone-700 px-2.5 py-0.5 rounded-md font-medium flex items-center gap-1">
+              <i class="fa-solid fa-user-check text-[11px] text-emerald-400"></i> Compostaje: <strong>Ing. Juan L. Cueto Tilano</strong>
+            </span>
+          </div>
+          <p class="text-[11px] text-stone-400">
+            Consultoría y Monitoreo de Compostaje • Seguimiento y control de la calidad
+          </p>
+        </div>
+      </div>
+
+      <!-- Acciones Globales: Exportar PDF / CSV / Cargar / Limpiar -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <button id="btnExportPdf" class="px-3.5 py-2 bg-red-700 hover:bg-red-800 text-white text-xs font-bold rounded-lg shadow transition flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-file-pdf text-sm"></i> Generar Reporte PDF
+        </button>
+
+        <button id="btnExportCsv" class="px-3 py-2 bg-bio-600 hover:bg-bio-700 text-white text-xs font-semibold rounded-lg shadow transition flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-file-csv text-sm"></i> CSV
+        </button>
+
+        <label for="csvFileInput" class="px-3 py-2 bg-stone-700 hover:bg-stone-600 text-white text-xs font-semibold rounded-lg shadow transition flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Cargar CSV
+        </label>
+        <input type="file" id="csvFileInput" accept=".csv" class="hidden">
+
+        <button id="btnClearData" class="px-2.5 py-2 bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-medium rounded-lg border border-stone-700 transition flex items-center gap-1" title="Reiniciar datos">
+          <i class="fa-solid fa-rotate-left"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sub-banner explicativo de Autoría y Respaldo -->
+  <div class="bg-emerald-500/10 border-b border-emerald-200/60 px-4 py-1.5 text-center text-xs text-emerald-900 font-medium no-print">
+    <div class="max-w-7xl mx-auto flex items-center justify-center flex-wrap gap-x-3 gap-y-1">
+      <span><i class="fa-solid fa-certificate text-emerald-600 mr-1"></i> Herramienta de Diagnóstico Asistido desarrollada por <strong>Ing. Juan L. Cueto Tilano</strong></span>
+      <span class="text-stone-300 hidden md:inline">•</span>
+      <span class="text-stone-600 text-[11px]">Diseñada para facilitar el registro y criterio técnico del operador de campo</span>
+    </div>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- COLUMNA IZQUIERDA: Formulario de Registro (5 columnas) -->
+    <section class="lg:col-span-5 flex flex-col gap-6 no-print">
+      <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden">
+        <div class="bg-stone-50 border-b border-stone-200 px-5 py-3.5 flex items-center justify-between">
+          <h2 class="font-bold text-stone-800 text-sm md:text-base flex items-center gap-2">
+            <i class="fa-solid fa-clipboard-check text-amber-600"></i> Nuevo Registro de Monitoreo
+          </h2>
+          <span class="text-xs bg-stone-200 text-stone-600 px-2 py-0.5 rounded font-mono" id="recordsCountBadge">0 registros</span>
+        </div>
+
+        <form id="monitoringForm" class="p-5 space-y-4">
+          <!-- Operador de Campo -->
+          <div class="bg-stone-50 p-3 rounded-xl border border-stone-200/70">
+            <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" for="operatorName">
+              <i class="fa-solid fa-user-gear mr-1 text-amber-600"></i> Técnico / Operador Responsable *
+            </label>
+            <input type="text" id="operatorName" required placeholder="Nombre del técnico o evaluador de campo"
+              class="w-full text-sm px-3 py-2 rounded-lg border border-stone-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 font-medium">
+            <p class="text-[11px] text-stone-500 mt-1">Este nombre figurará como autor del muestreo en el informe PDF oficial.</p>
+          </div>
+
+          <!-- Escala de tiempo: Día o Semana -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-stone-600 uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-calendar-check mr-1 text-stone-400"></i> Intervalo
+              </label>
+              <select id="timeUnitType" class="w-full text-sm px-3 py-2 rounded-lg border border-stone-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <option value="Día">Día</option>
+                <option value="Semana">Semana</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-stone-600 uppercase tracking-wider mb-1" for="timeUnitValue">
+                Número (<span id="unitLabel">Día</span> #) *
+              </label>
+              <input type="number" id="timeUnitValue" min="1" step="1" required placeholder="1"
+                class="w-full text-sm px-3 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+          </div>
+
+          <!-- Fecha de Toma -->
+          <div>
+            <label class="block text-xs font-bold text-stone-600 uppercase tracking-wider mb-1" for="recordDate">
+              <i class="fa-regular fa-clock mr-1 text-stone-400"></i> Fecha de Inspección
+            </label>
+            <input type="date" id="recordDate" required
+              class="w-full text-sm px-3 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          </div>
+
+          <!-- Parámetros físicos: Temperatura y Oxígeno -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-200/60">
+              <label class="block text-xs font-bold text-amber-900 mb-1 flex items-center justify-between" for="temperature">
+                <span><i class="fa-solid fa-temperature-high text-amber-600 mr-1"></i> Temp (°C) *</span>
+                <span class="text-[10px] font-normal text-amber-700">Termómetro</span>
+              </label>
+              <input type="number" id="temperature" step="0.1" min="0" max="95" required placeholder="Ej: 58.5"
+                class="w-full text-base font-bold text-stone-800 px-3 py-1.5 rounded-lg border border-amber-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+              <p class="text-[10px] text-amber-800/80 mt-1">Termófilo ideal: 55°C - 65°C</p>
+            </div>
+
+            <div class="bg-sky-50/60 p-3 rounded-xl border border-sky-200/60">
+              <label class="block text-xs font-bold text-sky-900 mb-1 flex items-center justify-between" for="oxygenLevel">
+                <span><i class="fa-solid fa-lungs text-sky-600 mr-1"></i> Oxígeno (%) *</span>
+                <span class="text-[10px] font-normal text-sky-700">Porosidad</span>
+              </label>
+              <input type="number" id="oxygenLevel" step="0.1" min="0" max="21" required placeholder="Ej: 12.0"
+                class="w-full text-base font-bold text-stone-800 px-3 py-1.5 rounded-lg border border-sky-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+              <p class="text-[10px] text-sky-800/80 mt-1">Límite crítico anaeróbico: &lt; 5%</p>
+            </div>
+          </div>
+
+          <!-- SECCIÓN HUMEDAD: Cuantitativa vs Prueba del Puño -->
+          <div class="border border-stone-200 rounded-xl p-3.5 bg-stone-50/70">
+            <div class="flex items-center justify-between mb-2 gap-2">
+              <label class="text-xs font-bold text-stone-700 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-droplet text-blue-600"></i> Medición de Humedad
+              </label>
+              <div class="inline-flex rounded-md shadow-sm shrink-0" role="group">
+                <button type="button" id="tabHumedadFist" class="px-2.5 py-1 text-xs font-semibold rounded-l-lg bg-amber-600 text-white border border-amber-600 transition">
+                  <i class="fa-solid fa-hand-back-fist mr-1"></i> Puño
+                </button>
+                <button type="button" id="tabHumedadSensor" class="px-2.5 py-1 text-xs font-medium rounded-r-lg bg-white text-stone-600 hover:bg-stone-100 border border-stone-300 border-l-0 transition">
+                  <i class="fa-solid fa-gauge mr-1"></i> Sensor
+                </button>
+              </div>
+            </div>
+
+            <div id="fistTestContainer" class="space-y-2">
+              <p class="text-[11px] text-stone-500 leading-snug">
+                Tome una muestra a 35-40 cm de profundidad, comprima con fuerza en la mano y observe la salida de gotas:
+              </p>
+              <select id="fistTestSelect" class="w-full text-xs sm:text-sm p-2 rounded-lg border border-stone-300 bg-white font-medium text-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <option value="seca">❌ Muy Seca: Se desmorona al abrir el puño, 0 gotas (&lt; 40%)</option>
+                <option value="ligera">⚠️ Ligeramente Seca: Forma terrón que se cuartea, 0 gotas (~45%)</option>
+                <option value="optima" selected>✅ Óptima: Salen 1 a 3 gotas entre los dedos y forma bolo húmedo (50% - 60%)</option>
+                <option value="moderada">💧 Exceso Moderado: Salen de 4 a 10 gotas con facilidad (~65%)</option>
+                <option value="saturada">🚨 Saturada / Lodosa: Escurre chorro continuo de agua (&gt; 70%)</option>
+              </select>
+              <div id="fistExplainer" class="bg-white p-2.5 rounded-lg border border-stone-200 text-xs text-stone-600 flex items-start gap-2">
+                <i class="fa-solid fa-circle-info text-amber-600 mt-0.5"></i>
+                <span id="fistDescriptionText">Rango biológico ideal: asegura respiración bacteriana sin ahogar microporos.</span>
+              </div>
+            </div>
+
+            <div id="sensorTestContainer" class="hidden space-y-2">
+              <p class="text-[11px] text-stone-500">Porcentaje medido mediante higrómetro o análisis gravimétrico:</p>
+              <div class="relative">
+                <input type="number" id="humiditySensorValue" min="0" max="100" step="0.5" placeholder="Ej: 55.0"
+                  class="w-full text-sm px-3 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <span class="absolute right-3 top-2 text-stone-400 font-bold text-sm">%</span>
+              </div>
+              <span class="text-[10px] text-stone-500 italic block">Si no cuenta con sonda electrónica, utilice la Prueba del Puño.</span>
+            </div>
+          </div>
+
+          <!-- Observaciones / Operaciones de Manejo -->
+          <div>
+            <label class="block text-xs font-bold text-stone-600 uppercase tracking-wider mb-1" for="recordNotes">
+              <i class="fa-solid fa-clipboard-list mr-1 text-stone-400"></i> Observaciones de Campo (Volteo, Olor, Estructurante...)
+            </label>
+            <textarea id="recordNotes" rows="2" placeholder="Ej: Se ejecutó volteo mecánico con incorporación de paja seca para airear la masa."
+              class="w-full text-xs sm:text-sm px-3 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+          </div>
+
+          <!-- Botón de Envío -->
+          <button type="submit" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-floppy-disk"></i> Registrar y Diagnosticar Pila
+          </button>
+        </form>
+      </div>
+
+      <!-- Ficha de Consulta Técnica Rápida -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-stone-200">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2 flex items-center justify-between">
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-book-open text-amber-600"></i> Criterios Técnicos de Monitoreo</span>
+          <span class="text-[10px] font-normal text-stone-400">Guía de Campo</span>
+        </h3>
+        <ul class="text-xs text-stone-600 space-y-1.5 list-disc list-inside">
+          <li><strong>Tiempo de Calentamiento:</strong> Una pila equilibrada debe alcanzar <strong>≥ 45 °C</strong> entre el día 2 y 5.</li>
+          <li><strong>Regla Higiénica (EPA 503):</strong> Mantener <strong>≥ 55 °C</strong> durante al menos 3 a 5 días continuos para sanitizar.</li>
+          <li><strong>Límite Superior:</strong> Superar los <strong>68 °C</strong> quema la flora benéfica y causa emisión de amoníaco.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- COLUMNA DERECHA: Análisis, Curva de Temperatura y Tabla (7 columnas) -->
+    <section class="lg:col-span-7 flex flex-col gap-6">
+
+      <!-- TARJETA 1: PANEL DE DIAGNÓSTICO EN TIEMPO REAL & ALERTAS -->
+      <div id="diagnosticCard" class="bg-white rounded-2xl shadow-sm border border-stone-200 p-5 relative overflow-hidden transition-all duration-300">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-3 border-b border-stone-100">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-stone-400 uppercase font-semibold">Estado y Fase del Compostaje</span>
+              <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.2 rounded font-semibold border border-amber-200">Auditoría Activa</span>
+            </div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-stone-800 flex items-center gap-2 mt-0.5" id="currentPhaseTitle">
+              Esperando registros...
+            </h2>
+          </div>
+          <div id="phaseBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-stone-100 text-stone-600">
+            Sin Datos
+          </div>
+        </div>
+
+        <!-- Indicadores Resumidos (Semáforos) -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 my-3 text-center">
+          <div class="p-2.5 rounded-xl bg-stone-50 border border-stone-200">
+            <span class="text-[11px] text-stone-500 block font-medium">Temperatura Actual</span>
+            <span id="kpiTemp" class="text-base sm:text-lg font-extrabold text-stone-800">-- °C</span>
+            <span id="kpiTempStatus" class="text-[10px] font-semibold text-stone-500 block mt-0.5">--</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-stone-50 border border-stone-200">
+            <span class="text-[11px] text-stone-500 block font-medium">Humedad Calc.</span>
+            <span id="kpiHumidity" class="text-base sm:text-lg font-extrabold text-stone-800">-- %</span>
+            <span id="kpiHumidityStatus" class="text-[10px] font-semibold text-stone-500 block mt-0.5">--</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-stone-50 border border-stone-200">
+            <span class="text-[11px] text-stone-500 block font-medium">Oxígeno (O₂)</span>
+            <span id="kpiOxygen" class="text-base sm:text-lg font-extrabold text-stone-800">-- %</span>
+            <span id="kpiOxygenStatus" class="text-[10px] font-semibold text-stone-500 block mt-0.5">--</span>
+          </div>
+        </div>
+
+        <!-- BANNER DE ALERTAS AVANZADAS -->
+        <div id="advancedAlertsContainer" class="space-y-2 mt-3">
+          <!-- Renderizado dinámico por JS -->
+        </div>
+
+        <!-- Dictamen y Plan de Manejo Recomendado -->
+        <div class="mt-3 bg-amber-50/70 border border-amber-200 rounded-xl p-3.5">
+          <h4 class="text-xs font-bold text-amber-900 flex items-center justify-between mb-1.5">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-list-check text-amber-700"></i> Plan de Manejo y Recomendación Técnica:</span>
+            <span class="text-[10px] font-normal text-amber-800 italic">Criterio: Ing. Juan L. Cueto Tilano</span>
+          </h4>
+          <div id="agroRecommendation" class="text-xs sm:text-sm text-amber-950 leading-relaxed">
+            Ingrese los datos de su primer monitoreo para generar el análisis automático de descomposición y recomendaciones de volteo o riego.
+          </div>
+        </div>
+      </div>
+
+      <!-- TARJETA 2: CURVA EVOLUTIVA DE TEMPERATURA Y HUMEDAD -->
+      <div class="bg-white rounded-2xl shadow-sm border border-stone-200 p-5">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div>
+            <h3 class="font-bold text-stone-800 text-sm md:text-base flex items-center gap-2">
+              <i class="fa-solid fa-chart-line text-amber-600"></i> Curva Dinámica Térmica y de Humedad
+            </h3>
+            <p class="text-xs text-stone-400">Evolución cinemática del proceso biológico</p>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="inline-flex items-center gap-1 font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+              <span class="w-2 h-2 rounded-full bg-amber-600 inline-block"></span> Temp (°C)
+            </span>
+            <span class="inline-flex items-center gap-1 font-semibold text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+              <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span> Humedad (%)
+            </span>
+          </div>
+        </div>
+
+        <div class="relative w-full h-64 sm:h-72">
+          <canvas id="compostChart"></canvas>
+        </div>
+        <div class="mt-2 text-[11px] text-stone-400 flex flex-wrap justify-between items-center gap-2">
+          <span>* Rango termófilo para sanitización: <strong>55°C - 65°C</strong></span>
+          <span id="chartFooterInfo" class="text-stone-500">Registros ordenados cronológicamente</span>
+        </div>
+      </div>
+
+      <!-- TARJETA 3: HISTORIAL DETALLADO DE MEDICIONES -->
+      <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden flex flex-col">
+        <div class="px-5 py-3.5 bg-stone-50 border-b border-stone-200 flex justify-between items-center">
+          <h3 class="font-bold text-stone-800 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-table-list text-stone-500"></i> Bitácora de Campo de la Pila
+          </h3>
+          <span class="text-xs text-stone-500">Gestión de puntos de control</span>
+        </div>
+
+        <div class="overflow-x-auto max-h-72 overflow-y-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead class="bg-stone-100 text-stone-600 sticky top-0 uppercase text-[10px] tracking-wider z-10">
+              <tr>
+                <th class="py-2.5 px-3">Tiempo</th>
+                <th class="py-2.5 px-3">Fecha</th>
+                <th class="py-2.5 px-3">Técnico Operador</th>
+                <th class="py-2.5 px-3">Temp (°C)</th>
+                <th class="py-2.5 px-3">Humedad</th>
+                <th class="py-2.5 px-3">O₂ (%)</th>
+                <th class="py-2.5 px-3">Fase</th>
+                <th class="py-2.5 px-2 text-center no-print">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="monitoringTableBody" class="divide-y divide-stone-200">
+              <!-- Renderizado por JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- PLANTILLA OCULTA: CONTENEDOR PARA GENERACIÓN DE PDF FORMAL -->
+  <div id="pdfReportWrapper" class="hidden no-print">
+    <div id="pdfReportContent" class="p-8 bg-white text-stone-900 font-sans max-w-4xl mx-auto">
+
+      <div class="border-b-2 border-emerald-600 pb-4 mb-5 flex justify-between items-start">
+        <div>
+          <h1 class="text-2xl font-black text-stone-900 tracking-tight flex items-center gap-2">
+            INFORME TÉCNICO DE MONITOREO DE COMPOSTAJE
+          </h1>
+          <p class="text-xs font-semibold text-emerald-800 uppercase tracking-wider mt-0.5">
+            CompostTrack BioPro • Control Fisicoquímico y Sanitario
+          </p>
+          <p class="text-[11px] text-stone-500 mt-1">
+            Fecha de emisión: <span id="pdfGenerationDate"></span> | Sistema de Pila Abierta / Hileras
+          </p>
+        </div>
+        <div class="text-right border-l pl-4 border-stone-200">
+          <span class="text-[10px] text-stone-400 uppercase tracking-wider block font-bold">Metodología y Supervisión</span>
+          <span class="text-sm font-extrabold text-stone-800 block">Ing. Juan L. Cueto Tilano</span>
+          <span class="text-[10px] text-stone-500">Consultoría Agronómica y Ambiental</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 bg-stone-50 p-4 rounded-xl border border-stone-200 mb-5 text-xs">
+        <div>
+          <span class="text-stone-500 block font-semibold text-[10px] uppercase">Técnico Evaluador Responsable:</span>
+          <span id="pdfOperatorName" class="text-sm font-bold text-stone-800">--</span>
+          <span class="text-[10px] text-stone-500 block mt-0.5">Toma y validación de parámetros in situ</span>
+        </div>
+        <div>
+          <span class="text-stone-500 block font-semibold text-[10px] uppercase">Estado Actual del Proceso:</span>
+          <span id="pdfCurrentPhase" class="text-sm font-bold text-emerald-800">--</span>
+          <span id="pdfTotalDays" class="text-[10px] text-stone-500 block mt-0.5">--</span>
+        </div>
+      </div>
+
+      <div class="mb-5 bg-amber-50/60 p-4 rounded-xl border border-amber-200">
+        <h3 class="text-xs font-bold text-amber-900 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <i class="fa-solid fa-microscope text-amber-700"></i> Dictamen y Diagnóstico de Descomposición:
+        </h3>
+        <div id="pdfDiagnosisText" class="text-xs text-stone-800 leading-relaxed"></div>
+      </div>
+
+      <div id="pdfAlertsSection" class="mb-5 space-y-2">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <div class="mb-6">
+        <h3 class="text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
+          Curva Térmica y de Humedad del Proceso:
+        </h3>
+        <div class="border border-stone-200 rounded-xl p-2 bg-stone-50 flex justify-center">
+          <img id="pdfChartImage" class="w-full max-h-60 object-contain" alt="Gráfica de temperatura del compost">
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
+          Registro Histórico de Mediciones:
+        </h3>
+        <table class="w-full text-left text-[10px] border-collapse border border-stone-300">
+          <thead class="bg-stone-200 text-stone-700">
+            <tr>
+              <th class="p-1.5 border border-stone-300">Tiempo</th>
+              <th class="p-1.5 border border-stone-300">Fecha</th>
+              <th class="p-1.5 border border-stone-300">Técnico</th>
+              <th class="p-1.5 border border-stone-300">Temp (°C)</th>
+              <th class="p-1.5 border border-stone-300">Humedad</th>
+              <th class="p-1.5 border border-stone-300">O₂ (%)</th>
+              <th class="p-1.5 border border-stone-300">Fase Asignada</th>
+              <th class="p-1.5 border border-stone-300">Observaciones</th>
+            </tr>
+          </thead>
+          <tbody id="pdfTableBody">
+            <!-- Rellenado por JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 pt-4 border-t border-stone-200 flex justify-between items-end text-[10px] text-stone-500">
+        <div>
+          <div class="w-48 border-b border-stone-400 pb-1 mb-1 text-center font-bold text-stone-700" id="pdfSignatureOperator">
+            Técnico de Campo
+          </div>
+          <span>Firma del Operador / Técnico de Monitoreo</span>
+        </div>
+        <div class="text-right">
+          <div class="w-56 border-b border-stone-400 pb-1 mb-1 text-center font-bold text-emerald-900">
+            Ing. Juan L. Cueto Tilano
+          </div>
+          <span>Validación Metodológica y Consultoría</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer-texto">
+        &copy; <span id="anio-footer">2026</span> Juan Luis Cueto Tilano. Todos los derechos reservados. Ingenier&iacute;a Ambiental, Sostenibilidad &amp; Desarrollo Territorial.
+    </p>
+</footer>
+
+<script src="../../assets/js/principal.js" defer></script>
+<script src="../../assets/js/componentes.js" defer></script>
+<script src="../../assets/js/chatbot.js" defer data-ruta-base="../../"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

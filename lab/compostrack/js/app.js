@@ -104,6 +104,7 @@ const advancedAlertsContainer = document.getElementById("advancedAlertsContainer
 const agroRecommendation = document.getElementById("agroRecommendation");
 
 let currentHumidityMode = "fist";
+let timeValueEdited = false;
 
 // --- INICIALIZACIÓN ---
 window.addEventListener("DOMContentLoaded", () => {
@@ -157,6 +158,7 @@ function setupEventListeners() {
   });
 
   recordDateInput.addEventListener("change", applyAutoTimeValue);
+  timeUnitValueInput.addEventListener("input", () => { timeValueEdited = true; });
 
   monitoringForm.addEventListener("submit", handleFormSubmit);
 
@@ -190,6 +192,7 @@ function suggestTimeValueFromDate(dateStr, type, records) {
 
 // Autocompleta el campo "Número (Día/Semana #)" a partir de la fecha seleccionada
 function applyAutoTimeValue() {
+  if (timeValueEdited) return;
   if (compostRecords.length === 0) {
     calculateNextTimeValue();
     return;
@@ -450,7 +453,7 @@ function handleFormSubmit(e) {
   humiditySensorValue.value = "";
   recordNotesInput.value = "";
 
-  calculateNextTimeValue();
+  applyAutoTimeValue();
   refreshAll();
 
   showToast(`¡Monitoreo de ${timeUnitType} ${timeUnitValue} registrado con éxito por ${operator}!`, "success");
